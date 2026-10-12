@@ -6,7 +6,7 @@ every collaborator (co-authors, tagged accounts, paid-partnership sponsor). The 
 newest-first, so it pages back from today until a whole page is older than the window.
 Resumable: results per brand in diwali2025_reels.json, written after every brand.
 
-  python data/jewellery_adlib/diwali_scan.py grtjewels tanishqjewellery ...
+  python data/jewellery_adlib/scan_brand_posts.py grtjewels tanishqjewellery ...
 """
 import json, os, sys, time
 from datetime import datetime, timezone, timedelta

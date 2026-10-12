@@ -14,15 +14,15 @@ Palmonas scan, 1 Sep - 12 Oct 2026).
 ```bash
 # 1. scan - window dates inclusive
 WIN_START=2026-09-01 WIN_END=2026-10-12 DIWALI_OUT=giva_palmonas_30d.json \
-  python data/jewellery_adlib/diwali_scan.py giva.co palmonas_official
+  python data/jewellery_adlib/scan_brand_posts.py giva.co palmonas_official
 
 # 2. build the Excel -> deliverables/Giva_Palmonas_Partnership_Posts_....xlsx
-python data/jewellery_adlib/build_partnership_30d.py
+python data/jewellery_adlib/build_partnership_excel.py
 ```
 On Windows PowerShell set the variables first, e.g. `$env:WIN_START="2026-09-01"`.
 
 For other brands: pass their handles to step 1, and edit `NAMES` / `SUB` at the
-top of `build_partnership_30d.py` (SUB = the brand's own sub-account prefixes,
+top of `build_partnership_excel.py` (SUB = the brand's own sub-account prefixes,
 so they are not counted as partners).
 
 ## Notes
