@@ -117,7 +117,7 @@ def _record(n: Dict[str, Any], brand: str, source: str, creator: Dict[str, Any])
         "likes": n.get("like_count"), "comments": n.get("comment_count") or 0, "views": _views_of(n),
         "likes_hidden": bool(n.get("like_and_view_counts_disabled")),
         "paid_flag": bool(n.get("is_paid_partnership")),
-        "is_paid_partnership": bool(n.get("is_paid_partnership")) and bool([s for s in sponsors if s]),
+        "is_paid_partnership": bool(n.get("is_paid_partnership")),   # label shows even with no sponsor named (brand is co-author)
         "sponsors": [s for s in sponsors if s], "coauthors": coauthors, "tagged": tagged,
         "reposts": n.get("media_repost_count"), "caption": cap[:300].replace("\n", " "),
     }
@@ -731,7 +731,7 @@ if __name__ == "__main__":
             for r in res["posts"]:
                 if "paid_flag" not in r:
                     r["paid_flag"] = bool(r.get("is_paid_partnership"))
-                r["is_paid_partnership"] = bool(r.get("paid_flag")) and bool(r.get("sponsors"))
+                r["is_paid_partnership"] = bool(r.get("paid_flag"))
                 r.update(evaluate(r["is_paid_partnership"], r["views"], r["likes"], r["comments"], r.get("followers"),
                                   r["caption"], r["likes_hidden"]))
             _save_cache(cache)
